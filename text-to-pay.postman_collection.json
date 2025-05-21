@@ -1,0 +1,466 @@
+{
+	"info": {
+		"_postman_id": "77c9a153-4e1b-48f4-a1e4-2fd3f84139d6",
+		"name": "Worldpay Text-to-Pay Collection",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "39998169"
+	},
+	"item": [
+		{
+			"name": "Merchant Settings",
+			"item": [
+				{
+					"name": "Get Merchant",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CorrelationId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CallerId",
+								"value": "postman",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Timestamp",
+								"value": "{{$timestamp}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{API_BASE_URL}}/v1/merchants/{{WORLDPAY_MID}}",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"v1",
+								"merchants",
+								"{{WORLDPAY_MID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Merchant",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CorrelationId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CallerId",
+								"value": "postman",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Timestamp",
+								"value": "{{$timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"friendlyName\": \"Worldpay Test Merchant\",\r\n    \"description\": \"Worldpay Test Merchant\",\r\n    \"sourceMerchantId\": \"{{WORLDPAY_MID}}\",\r\n    \"theme\": {\r\n        \"primaryColorHexCode\": \"#FF00FF\",\r\n        \"borderRadiusPixels\": \"123\",\r\n        \"logoUrl\": \"https://www.strunkmedia.com/wp-content/uploads/2018/05/bigstock-Print-163213010.png\"\r\n    },\r\n    \"links\": {\r\n        \"privacy\": \"https://merchantcompany.com/privacy-policy\",\r\n        \"return\": \"https://merchantcompany.com/return-policy\",\r\n        \"cancellation\": \"https://merchantcompany.com/cancellation-policy\",\r\n        \"shipping\": \"https://merchantcompany.com/shipping-policy\"\r\n    },\r\n    \"contacts\": {\r\n        \"customerService\": [\r\n            {\r\n                \"name\": \"string\",\r\n                \"phone\": \"+11232222222\",\r\n                \"mobilePhone\": \"+11233333333\",\r\n                \"email\": \"customersupport@merchantcompany.com\"\r\n            }\r\n        ],\r\n        \"technicalSupport\": [\r\n            {\r\n                \"name\": \"string\",\r\n                \"phone\": \"+11232222222\",\r\n                \"mobilePhone\": \"+11233333333\",\r\n                \"email\": \"technicalsupport@merchantcompany.com\"\r\n            }\r\n        ],\r\n        \"businessOperations\": [\r\n            {\r\n                \"name\": \"string\",\r\n                \"phone\": \"+11232222222\",\r\n                \"mobilePhone\": \"+11233333333\",\r\n                \"email\": \"businessoperations@merchantcompany.com\"\r\n            }\r\n        ]\r\n    }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/v1/merchants/{{WORLDPAY_MID}}",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"v1",
+								"merchants",
+								"{{WORLDPAY_MID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Manage Customers",
+			"item": [
+				{
+					"name": "Create Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"const responseBody = pm.response.json();\r",
+									"pm.environment.set(\"CUSTOMER_ID\", responseBody.id);"
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CorrelationId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CallerId",
+								"value": "postman",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Timestamp",
+								"value": "{{$timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"John Doe\",\r\n  \"contact\": {\r\n    \"phone\": \"{{CUSTOMER_PHONE}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/v1/merchants/{{WORLDPAY_MID}}/customers",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"v1",
+								"merchants",
+								"{{WORLDPAY_MID}}",
+								"customers"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Update Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CorrelationId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CallerId",
+								"value": "postman",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Timestamp",
+								"value": "{{$timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"name\": \"Jonathan Doe\",\r\n  \"contact\": {\r\n    \"phone\": \"{{CUSTOMER_PHONE}}\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/v1/merchants/{{WORLDPAY_MID}}/customers/{{CUSTOMER_ID}}",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"v1",
+								"merchants",
+								"{{WORLDPAY_MID}}",
+								"customers",
+								"{{CUSTOMER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Get Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CorrelationId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CallerId",
+								"value": "postman",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Timestamp",
+								"value": "{{$timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/v1/merchants/{{WORLDPAY_MID}}/customers/{{CUSTOMER_ID}}",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"v1",
+								"merchants",
+								"{{WORLDPAY_MID}}",
+								"customers",
+								"{{CUSTOMER_ID}}"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete Customer",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CorrelationId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CallerId",
+								"value": "postman",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Timestamp",
+								"value": "{{$timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/v1/merchants/{{WORLDPAY_MID}}/customers/{{CUSTOMER_ID}}",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"v1",
+								"merchants",
+								"{{WORLDPAY_MID}}",
+								"customers",
+								"{{CUSTOMER_ID}}"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Payments",
+			"item": [
+				{
+					"name": "Create Payment",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript",
+								"packages": {}
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "accept",
+								"value": "application/json",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CorrelationId",
+								"value": "{{$guid}}",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Diagnostics-CallerId",
+								"value": "postman",
+								"type": "text"
+							},
+							{
+								"key": "X-WP-Timestamp",
+								"value": "{{$timestamp}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"totalAmount\": 3500,\r\n  \"currency\": \"USD\",\r\n  \"invoices\": [\r\n    {\r\n      \"title\": \"Monthly Service\",\r\n      \"reference\": \"{{$timestamp}}\",\r\n      \"invoiceDate\": \"2025-05-19\",\r\n      \"amount\": 3500\r\n    }\r\n  ],\r\n  \"message\": {\r\n    \"text\": \"Thank you for your business. Please pay your invoice.\"\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{API_BASE_URL}}/v1/merchants/{{WORLDPAY_MID}}/customers/{{CUSTOMER_ID}}/payments",
+							"host": [
+								"{{API_BASE_URL}}"
+							],
+							"path": [
+								"v1",
+								"merchants",
+								"{{WORLDPAY_MID}}",
+								"customers",
+								"{{CUSTOMER_ID}}",
+								"payments"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"auth": {
+		"type": "bearer",
+		"bearer": [
+			{
+				"key": "token",
+				"value": "{{WORLDPAY_API_KEY}}",
+				"type": "string"
+			}
+		]
+	},
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": []
+}

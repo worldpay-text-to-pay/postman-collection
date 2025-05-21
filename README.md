@@ -1,6 +1,6 @@
 # Worldpay Text-to-Pay API
 
-This repository contains a Postman collection and environment template for the Worldpay Text-to-Pay API. This collection allows you to quickly get started with integrating payment requests via SMS to your customers.
+This repository contains the Worldpay Text-to-Pay Collection and environment template for the Worldpay Text-to-Pay API. This collection allows you to quickly get started with integrating payment requests via SMS to your customers.
 
 ## Overview
 
@@ -39,7 +39,7 @@ The Text-to-Pay API allows merchants to:
    - `API_BASE_URL`: Default is `https://apis.stage.worldpay.com/text-to-pay` (change to production URL when ready)
    - `WORLDPAY_API_KEY`: Your Worldpay API key
    - `WORLDPAY_MID`: Your Worldpay Merchant ID
-   - `CUSTOMER_PHONE`: Test customer phone number
+   - `CUSTOMER_PHONE`: Must be set to your phone number (ex: +11232222222)
 4. Click **Save**
 
 ## Using the Collection
@@ -71,7 +71,7 @@ The collection is organized into three main folders:
 | API_BASE_URL | Base URL for the API | https://apis.stage.worldpay.com/text-to-pay |
 | WORLDPAY_API_KEY | Your API key | (must be set) |
 | WORLDPAY_MID | Your merchant ID | (must be set) |
-| CUSTOMER_PHONE | Phone number for test customer | (can be set at runtime) |
+| CUSTOMER_PHONE | Phone number for test customer | (must be set to your phone number ex: +11232222222) |
 | CUSTOMER_ID | ID of created customer | (set automatically) |
 
 ## Documentation
@@ -83,3 +83,7 @@ For detailed information about each endpoint, refer to the official [Worldpay De
 If you encounter any issues or have questions, please:
 1. Open an issue in this repository
 2. Contact Worldpay technical support at [techsupport@worldpay.com](mailto:techsupport@worldpay.com)
+
+## License
+
+This project is licensed under the MIT License - see the LICENSE file for details.

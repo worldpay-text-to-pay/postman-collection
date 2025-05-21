@@ -1,0 +1,38 @@
+{
+  "id": "your-environment-id",
+  "name": "Worldpay Text-to-Pay Environment",
+  "values": [
+    {
+      "key": "API_BASE_URL",
+      "value": "https://apis.stage.worldpay.com/text-to-pay",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "WORLDPAY_API_KEY",
+      "value": "",
+      "type": "secret",
+      "enabled": true
+    },
+    {
+      "key": "WORLDPAY_MID",
+      "value": "",
+      "type": "default",
+      "enabled": true
+    },
+    {
+      "key": "CUSTOMER_PHONE",
+      "value": "",
+      "type": "default",
+      "description": "Must be set to your phone number (ex: +11232222222)",
+      "enabled": true
+    },
+    {
+      "key": "CUSTOMER_ID",
+      "value": "",
+      "type": "default",
+      "enabled": true
+    }
+  ],
+  "_postman_variable_scope": "environment"
+}
