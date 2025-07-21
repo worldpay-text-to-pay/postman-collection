@@ -76,7 +76,7 @@ The collection is organized into three main folders:
 
 ## Documentation
 
-For detailed information about each endpoint, refer to the official [Worldpay Developer Documentation](https://developer.worldpay.com).
+For detailed information about each endpoint, refer to the official [Worldpay Developer Documentation](https://docs.worldpay.com).
 
 ## Support
 
